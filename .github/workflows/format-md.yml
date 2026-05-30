@@ -1,6 +1,8 @@
 name: Auto Format Markdown
 
 on:
+  push:
+    branches: [main, develop]
   pull_request:
     branches: [main, develop]
     # Optimize the workflow to run only when markdown files are modified
