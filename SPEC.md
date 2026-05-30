@@ -1,6 +1,6 @@
 # SPEC
 
-Technical specification for Legacy Revival Toolkit.
+Technical specification for ETERN Toolkit.
 
 ---
 
