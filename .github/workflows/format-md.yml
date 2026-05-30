@@ -2,7 +2,7 @@ name: Auto Format Markdown
 
 on:
   pull_request:
-    branches: [main, master]
+    branches: [main, develop]
     # Optimize the workflow to run only when markdown files are modified
     paths:
       - "**/*.md"
