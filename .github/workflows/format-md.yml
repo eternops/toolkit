@@ -1,0 +1,47 @@
+name: Auto Format Markdown
+
+on:
+  pull_request:
+    branches: [main, develop]
+    # Optimize the workflow to run only when markdown files are modified
+    paths:
+      - "**/*.md"
+
+jobs:
+  format:
+    runs-on: ubuntu-latest
+    # Grant permissions for GitHub Actions to modify code and push commits
+    permissions:
+      contents: write # Required for modifying files and pushing commits
+      pull-requests: write # Required for commenting on PRs or managing PR events
+
+    steps:
+      # 1. Checkout the branch where the PR originated (including token permissions)
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+          ref: ${{ github.event.pull_request.head.ref }}
+
+      # 2. Set up Node.js environment
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+
+      # 3. Install Prettier globally (for environments without a dedicated package.json)
+      - name: Install Prettier
+        run: npm install -g prettier
+
+      # 4. Format all Markdown files except CHANGELOG.md
+      # (As configured previously, CHANGELOG.md is excluded and only other files are modified)
+      - name: Run Prettier
+        run: |
+          prettier --write "**/*.md" "!CHANGELOG.md"
+
+      # 5. Automatically commit and push changes back to the PR branch if any modifications are found
+      - name: Check for changes & Commit
+        uses: stefanzweifel/git-auto-commit-action@v7
+        with:
+          commit_message: "style: auto format markdown files according to project rules"
+          file_pattern: "*.md"

@@ -1,6 +1,6 @@
 # IDEAS
 
-Possible future directions for Legacy Revival Toolkit.
+Possible future directions for ETERN Toolkit.
 
 ---
 

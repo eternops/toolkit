@@ -1,8 +1,8 @@
-# Legacy Revival Toolkit
+# ETERN Toolkit
 
 AI-assisted recovery tools for aging software.
 
-Legacy Revival Toolkit helps engineers analyze, revive, and modernize aging software systems with minimal disruption.
+ETERN Toolkit helps engineers analyze, revive, and modernize aging software systems with minimal disruption.
 
 It is designed for legacy recovery workflows such as:
 
