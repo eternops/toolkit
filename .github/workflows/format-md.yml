@@ -18,16 +18,16 @@ jobs:
     steps:
       # 1. Checkout the branch where the PR originated (including token permissions)
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: ${{ github.event.pull_request.head.repo.full_name }}
           ref: ${{ github.event.pull_request.head.ref }}
 
       # 2. Set up Node.js environment
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
-          node-version: 22
+          node-version: 24
 
       # 3. Install Prettier globally (for environments without a dedicated package.json)
       - name: Install Prettier
@@ -41,7 +41,7 @@ jobs:
 
       # 5. Automatically commit and push changes back to the PR branch if any modifications are found
       - name: Check for changes & Commit
-        uses: stefanzweifel/git-auto-commit-action@v5
+        uses: stefanzweifel/git-auto-commit-action@v7
         with:
           commit_message: "style: auto format markdown files according to project rules"
           file_pattern: "*.md"
